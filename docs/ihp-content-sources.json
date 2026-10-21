@@ -1,0 +1,231 @@
+{
+  "sources": [
+    {
+      "archive": "IHP-背景调查-2026HP.zip",
+      "member": "IHP-▒│╛░╡≈▓Θ-2026HP/ú¿ENú⌐IHP-▒│╛░╡≈▓Θ-2026HP.docx",
+      "sha256": "b22c92854f7fe6b00aaede81b27176a6a38b27d8caac46a83e74843613a16fcd",
+      "bytes": 1031955
+    },
+    {
+      "archive": "IHP-项目改进.zip",
+      "member": "IHP-╧ε─┐╕─╜°/ú¿ENú⌐IHP-╧ε─┐╕─╜°-2026HP.docx",
+      "sha256": "b4dae8042a8ce1c44b33425a8004c529c13e8f4e21be3b836a4989c71314ec56",
+      "bytes": 24767564
+    }
+  ],
+  "generatedAssets": [
+    {
+      "source": "word/media/image2.png",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-02.webp",
+      "sourceBytes": 1311942,
+      "outputBytes": 126918,
+      "sha256": "c311263e2bcd9f62ccadb28675baa522832d6a228210705817f34c02a2a985e8",
+      "uploadFile": "hp/ihp-improvement-fig-02-c311263e2bcd.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-02-c311263e2bcd.webp"
+    },
+    {
+      "source": "word/media/image3.jpeg",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-03.webp",
+      "sourceBytes": 118502,
+      "outputBytes": 251140,
+      "sha256": "bb30a171ca2476276866cb6283c6f5458777db5bf137938e0b1c61575692399e",
+      "uploadFile": "hp/ihp-improvement-fig-03-bb30a171ca24.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-03-bb30a171ca24.webp"
+    },
+    {
+      "source": "word/media/image4.png",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-04.webp",
+      "sourceBytes": 188742,
+      "outputBytes": 106448,
+      "sha256": "9a01024e39997891667b497dbf1cca40a5421b2a013f1d9afb8f9ec8200e433a",
+      "uploadFile": "hp/ihp-improvement-fig-04-9a01024e3999.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-04-9a01024e3999.webp"
+    },
+    {
+      "source": "IHP-图片更换.zip/Figure 2. Team members are undergoing centralized winter break training.png",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-05.webp",
+      "sourceBytes": 1242354,
+      "outputBytes": 145198,
+      "sha256": "4fd47d15b0fe8b02bd28f2d18f7f3f8a0e18e5efa4f3639c0fbc1c19be998769",
+      "uploadFile": "hp/ihp-improvement-fig-05-4fd47d15b0fe.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-05-4fd47d15b0fe.webp"
+    },
+    {
+      "source": "word/media/image6.jpeg",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-06.webp",
+      "sourceBytes": 98589,
+      "outputBytes": 178480,
+      "sha256": "0ca9264805b0302f1b9328a141c7f180032a28685e0560ee68ed8082c6a17ef5",
+      "uploadFile": "hp/ihp-improvement-fig-06-0ca9264805b0.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-06-0ca9264805b0.webp"
+    },
+    {
+      "source": "word/media/image7.jpeg",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-07.webp",
+      "sourceBytes": 168604,
+      "outputBytes": 559444,
+      "sha256": "91409c5cb02776a9a8e837b8a5f326323564e330484fef7b5f769bf6719669fd",
+      "uploadFile": "hp/ihp-improvement-fig-07-91409c5cb027.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-07-91409c5cb027.webp"
+    },
+    {
+      "source": "IHP-图片更换.zip/张年辉.png",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-08.webp",
+      "sourceBytes": 270984,
+      "outputBytes": 21884,
+      "sha256": "573c6688349833b6cc1066e64048de1a6a12e7d6a2c9d92a2a4e08d0fceafa73",
+      "uploadFile": "hp/ihp-improvement-fig-08-573c66883498.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-08-573c66883498.webp"
+    },
+    {
+      "source": "IHP-图片更换.zip/张阳.png",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-09.webp",
+      "sourceBytes": 254007,
+      "outputBytes": 15074,
+      "sha256": "32d8752278139fc20f76b315d3940fe0e7b03db57282e962f1096af5765ea0a2",
+      "uploadFile": "hp/ihp-improvement-fig-09-32d875227813.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-09-32d875227813.webp"
+    },
+    {
+      "source": "word/media/image10.jpeg",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-10.webp",
+      "sourceBytes": 2491431,
+      "outputBytes": 894192,
+      "sha256": "e1cd215b62e1fc7dd8c6594285582fa546441e8aaf9576f0ee94a6e94bde8c8c",
+      "uploadFile": "hp/ihp-improvement-fig-10-e1cd215b62e1.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-10-e1cd215b62e1.webp"
+    },
+    {
+      "source": "IHP-图片更换.zip/徐辉.png",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-11.webp",
+      "sourceBytes": 299061,
+      "outputBytes": 28436,
+      "sha256": "1639c2cb719d3a452490e119991f716a9d92f732e04d1c0196cbd26c8fee65c7",
+      "uploadFile": "hp/ihp-improvement-fig-11-1639c2cb719d.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-11-1639c2cb719d.webp"
+    },
+    {
+      "source": "IHP-图片更换.zip/曹洋.jpg",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-12.webp",
+      "sourceBytes": 58703,
+      "outputBytes": 34974,
+      "sha256": "17929c7fefddb9d7e875669e5680951112b7d59309a57846b0922a273243207e",
+      "uploadFile": "hp/ihp-improvement-fig-12-17929c7fefdd.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-12-17929c7fefdd.webp"
+    },
+    {
+      "source": "IHP-图片更换.zip/刘科.png",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-13.webp",
+      "sourceBytes": 401496,
+      "outputBytes": 55828,
+      "sha256": "72c1abd1710c4c6f3dca3069222df2f4f70815edd6fc99289fd5b159f06edc9b",
+      "uploadFile": "hp/ihp-improvement-fig-13-72c1abd1710c.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-13-72c1abd1710c.webp"
+    },
+    {
+      "source": "IHP-图片更换.zip/徐辉.png",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-14.webp",
+      "sourceBytes": 299061,
+      "outputBytes": 28436,
+      "sha256": "1639c2cb719d3a452490e119991f716a9d92f732e04d1c0196cbd26c8fee65c7",
+      "uploadFile": "hp/ihp-improvement-fig-14-1639c2cb719d.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-14-1639c2cb719d.webp"
+    },
+    {
+      "source": "word/media/image14.jpeg",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-15.webp",
+      "sourceBytes": 27210,
+      "outputBytes": 124858,
+      "sha256": "c36aa11e6082e3c8bf415ef2987343df85335955478385359a0baf5d7f94ab0c",
+      "uploadFile": "hp/ihp-improvement-fig-15-c36aa11e6082.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-15-c36aa11e6082.webp"
+    },
+    {
+      "source": "IHP-图片更换.zip/吴传芳.png",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-16.webp",
+      "sourceBytes": 254802,
+      "outputBytes": 18088,
+      "sha256": "1ae66162a40c2cd5404dc51eee2c047b5e2d51cc347966cdcd000033b7529986",
+      "uploadFile": "hp/ihp-improvement-fig-16-1ae66162a40c.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-16-1ae66162a40c.webp"
+    },
+    {
+      "source": "IHP-图片更换.zip/张晓晗.png",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-17.webp",
+      "sourceBytes": 1431922,
+      "outputBytes": 111342,
+      "sha256": "20e1a7edbc946306794f9dd847d1fe073410e266dd89b83c764fb1887537341a",
+      "uploadFile": "hp/ihp-improvement-fig-17-20e1a7edbc94.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-17-20e1a7edbc94.webp"
+    },
+    {
+      "source": "supplied/8A294143C562194C788FAFA7D4336D80.png",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-18.webp",
+      "sourceBytes": 1090123,
+      "outputBytes": 46314,
+      "sha256": "a7297c91f3afa9b340af33d22bd449415783df86020e9c1a823038f5817b38de",
+      "uploadFile": "hp/ihp-improvement-fig-18-a7297c91f3af.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-18-a7297c91f3af.webp"
+    },
+    {
+      "source": "IHP-图片更换.zip/施天穹.jpg",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-19.webp",
+      "sourceBytes": 45327,
+      "outputBytes": 27944,
+      "sha256": "c423eceae0aa4ec5cce3c409fc12e128227c1a552e3fd426b73c57ee8f7d4d32",
+      "uploadFile": "hp/ihp-improvement-fig-19-c423eceae0aa.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-19-c423eceae0aa.webp"
+    },
+    {
+      "source": "word/media/image19.jpeg",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-20.webp",
+      "sourceBytes": 32722,
+      "outputBytes": 84168,
+      "sha256": "79741ef761e6f23e50df14384c2558c49bbbfc71eed0d0525a2246cfce6ed59c",
+      "uploadFile": "hp/ihp-improvement-fig-20-79741ef761e6.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-20-79741ef761e6.webp"
+    },
+    {
+      "source": "word/media/image20.png",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-21.webp",
+      "sourceBytes": 2935086,
+      "outputBytes": 280088,
+      "sha256": "37a2d0d5d178f3e19a04e2d98a0ecb33d743658029d5dec487789df0f1497c48",
+      "uploadFile": "hp/ihp-improvement-fig-21-37a2d0d5d178.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-21-37a2d0d5d178.webp"
+    },
+    {
+      "source": "IHP-图片更换.zip/秦九福.jpg",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-22.webp",
+      "sourceBytes": 80196,
+      "outputBytes": 57634,
+      "sha256": "e5fc2409080acc10851efc749dce3ad6425fced968fa6df25944bb62cb5a4fde",
+      "uploadFile": "hp/ihp-improvement-fig-22-e5fc2409080a.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-22-e5fc2409080a.webp"
+    },
+    {
+      "source": "Weixin Image_20261021140722_111_843.png",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-23.webp",
+      "sourceBytes": 2044013,
+      "outputBytes": 146412,
+      "sha256": "86ffadab5896c63ab2f87755cec8b1caa62701f443368715319e3ddadf480e6a",
+      "uploadFile": "hp/abg-group-86ffadab5896.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/abg-group-86ffadab5896.webp"
+    },
+    {
+      "source": "word/media/image23.jpeg",
+      "output": "/figures/hp/ihp/ihp-improvement-fig-24.webp",
+      "sourceBytes": 87042,
+      "outputBytes": 459290,
+      "sha256": "9be30b81723a263c06d4324c4b7bdb43a26fe939307389781faf9c929e92ce11",
+      "uploadFile": "hp/ihp-improvement-fig-24-9be30b81723a.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/hp/ihp-improvement-fig-24-9be30b81723a.webp"
+    }
+  ],
+  "discardedFormatReferenceImages": 2,
+  "pageSections": [
+    "Background Research",
+    "Stakeholder Analysis",
+    "Project Improvement"
+  ]
+}

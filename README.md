@@ -33,6 +33,7 @@ The GitHub workflow supplies its own base path and creates an SPA fallback for d
 - `src/App.tsx` — routes and reusable page layouts
 - `src/PixelWorld.tsx` — the pixel-art homepage: scroll journey, free roam, chapter overlays
 - `src/pixel/` — the pixel engine: palette, drawing helper, bitmap font, tiles, sprites, world, renderer
+- `src/pixel/hero.ts` and `src/assets/researcher-sheet.png` — playable researcher; see `docs/researcher-sprite.md`
 - `tools/art-check/` — renders the world to PNG without a browser (`npm run art:check`)
 - `src/site-data.ts` — all current page copy and review states
 - `src/styles.css` — responsive visual system and reduced-motion fallback
@@ -48,7 +49,6 @@ The GitHub workflow supplies its own base path and creates an SPA fallback for d
 3. Replace every `Team input required` section with team-authored, human-reviewed work.
 4. Verify all scientific claims, parameters, citations, figures and quotations against primary records.
 5. Keep the official `LICENSE` file and visible CC BY 4.0 footer link.
-6. Update `/responsible-ai` with every model, use and named human reviewer.
 
 See `PIXEL-WORLD.md` for the homepage design, the rules the pixel art depends on, and what still needs browser acceptance.
 

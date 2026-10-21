@@ -49,3 +49,17 @@ tools/art-check/shots
 # Single-file preview build
 tools/preview/.out
 tools/preview/dunaterp-preview.html
+
+# Original team photos are served by the official iGEM asset library.
+/public/figures/team/
+
+# Brand image originals are hosted on the official iGEM asset library.
+/public/images/brand/
+
+# Offline copies of site fonts; production uses the official iGEM CDN.
+/public/fonts/site/
+
+# Engineering document images are served by the official iGEM CDN.
+/public/figures/wet-lab/engineering-total/
+/public/figures/design/07-biosafety-high-salt.webp
+/public/figures/design/08-biosafety-low-salt.webp

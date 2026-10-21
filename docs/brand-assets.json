@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-21",
+  "reference": "Panda DunaTerp / SCU-CHINA 2026 logo supplied by the user. Original artist not specified.",
+  "header": "Panda-and-T icon extracted with the built-in OpenAI image generation tool; transparent background with opaque white facial details.",
+  "footer": "Complete transparent logo supplied by the user, including the project name and year. The panda face remains opaque white; the surrounding background is transparent. Displayed at 224 by 112 CSS pixels with proportional sizing.",
+  "favicon": "Self-contained SVG embedding the 64px transparent icon PNG; no external resource dependencies inside the favicon.",
+  "encoding": "WebP delivery uses lossless encoding after resizing to the required display resolution.",
+  "assets": [
+    {
+      "source": "images/brand/panda-icon.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/brand/panda-icon-65b54d9eb396.webp",
+      "sourceSha256": "8506111c322db83a8109d1e19a1381299b2430f50547c2fb35f40fad4f374ee9",
+      "sha256": "65b54d9eb396209fec737647bf13b8dbc053c7116ec2b3083f24fb6f3c0c6652",
+      "bytes": 28370
+    },
+    {
+      "source": "favicon.svg",
+      "url": "https://static.igem.wiki/teams/6212/wiki/brand/panda-favicon-9df39f7c8651.svg",
+      "sourceSha256": "05dc86f98eca4f827af3a0195d7f4c1af7c1fd390a821e5956cbf0485b6e2dbe",
+      "sha256": "9df39f7c8651e226bfd67ffc2ce880104fff253bb1074f860d90117c16487e76",
+      "bytes": 7855
+    },
+    {
+      "source": "images/brand/panda-wordmark.webp",
+      "url": "https://static.igem.wiki/teams/6212/wiki/brand/panda-wordmark-5e58d88f7401.webp",
+      "sha256": "5e58d88f7401df3e6f4e7c284cf85f3a59864150c3eba452849dd2954541c9a6",
+      "sourceSha256": "f2d93b6eee9b045f3e9277971a978be7d7a8ea111f44b69de6ad436e8039bbdc",
+      "bytes": 78732
+    }
+  ]
+}

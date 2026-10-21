@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 import { StoryGlyph } from "./StoryGlyph";
+import { scientificNameRanges } from '../scientific-names';
 export function StoryDialogue({ text, speaker, speakerTone = "#cdf558", label = "Continue", delay = 0, onNext, opening = false }: {
   text: string; speaker: string; speakerTone?: string; label?: string; delay?: number; onNext: () => void; opening?: boolean;
 }) {
@@ -12,38 +13,49 @@ export function StoryDialogue({ text, speaker, speakerTone = "#cdf558", label = 
     if (!complete) setRevealed(true);
     else onNext();
   }, [complete, onNext]);
+
   useEffect(() => {
     next.current?.focus({ preventScroll: true });
     if (reduce || revealed) return;
+
     let frame = 0;
     let elapsed = 0;
     let previous = performance.now();
-    const visibility = () => { previous = performance.now(); };
-    document.addEventListener("visibilitychange", visibility);
+    const resetClock = () => { previous = performance.now(); };
+    document.addEventListener("visibilitychange", resetClock);
+
     const tick = (now: number) => {
       if (!document.hidden) elapsed += now - previous;
       previous = now;
-      const chars = Math.min(text.length, Math.max(0, Math.floor((elapsed - delay) / 19)));
-      setCount(chars);
-      if (chars < text.length) frame = requestAnimationFrame(tick);
+      const characters = Math.min(text.length, Math.max(0, Math.floor((elapsed - delay) / 19)));
+      setCount(characters);
+      if (characters < text.length) frame = requestAnimationFrame(tick);
     };
+
     frame = requestAnimationFrame(tick);
-    return () => { cancelAnimationFrame(frame); document.removeEventListener("visibilitychange", visibility); };
+    return () => {
+      cancelAnimationFrame(frame);
+      document.removeEventListener("visibilitychange", resetClock);
+    };
   }, [text, delay, reduce, revealed]);
+
   const visibleCount = complete ? text.length : count;
   const cursorAt = complete ? -1 : text.slice(0, visibleCount).trimEnd().length - 1;
   const parts = text.split(/(\s+)/);
+  const names = scientificNameRanges(text);
   const stableText = parts.map((part, partIndex) => {
     const start = parts.slice(0, partIndex).join("").length;
     if (/^\s+$/.test(part)) return <span key={`space-${partIndex}`}>{part}</span>;
-    return <span className="story-word" key={`word-${partIndex}`}>
+    const isScientificName = names.some(name => name.start <= start && name.end >= start + part.length);
+    const Word = isScientificName ? 'em' : 'span';
+    return <Word className={`story-word${isScientificName ? ' scientific-name' : ''}`} key={`word-${partIndex}`}>
       {Array.from(part).map((character, characterIndex) => {
         const index = start + characterIndex;
         return <span className={`story-char${index < visibleCount ? " is-visible" : ""}`} key={index}>
           {character}{index === cursorAt && <i className="story-cursor" />}
         </span>;
       })}
-    </span>;
+    </Word>;
   });
   return <div className={`story-dialogue${opening ? " story-dialogue--opening" : ""}`} style={{ "--story-speaker": speakerTone } as CSSProperties}>
     {!opening && <div className="story-portrait"><StoryGlyph kind="person" tone={speakerTone} /><span>FIELD NOTES</span></div>}

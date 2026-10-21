@@ -7,6 +7,7 @@
 
 import { PixelRenderer, type Camera, type Drawable } from "./renderer";
 import type { Facing } from "./sprites";
+import { HERO_DISPLAY_H } from "./hero";
 import { createNpcs, type Npc } from "./npc-data";
 import { TILE, drag } from "./tiles";
 import {
@@ -27,6 +28,8 @@ export type EngineEvents = {
   onMode: (mode: Mode) => void;
   /** Index into world.stations, or -1 between chapters. */
   onChapter: (index: number) => void;
+  /** Current normalised position along the route. */
+  onJourney?: (u: number) => void;
   onPrompt: (station: Station | null) => void;
   /** Fired when the visitor confirms an interaction. */
   onEnter: (station: Station) => void;
@@ -45,9 +48,9 @@ const ACCEL = 620;
 const FRICTION = 12;
 
 // Guided-mode spring, carried over from the previous scroll journey.
-const FOLLOW_STIFFNESS = 70;
-const FOLLOW_DAMPING = 15;
-const MAX_FOLLOW_SPEED = 0.48;
+const FOLLOW_STIFFNESS = 50;
+const FOLLOW_DAMPING = 14;
+const MAX_FOLLOW_SPEED = 0.3;
 
 const STATION_INTERACT_RADIUS = 108;
 const NPC_INTERACT_RADIUS = 62;
@@ -108,6 +111,7 @@ export class PixelEngine {
   private activeNpc: Npc | null = null;
   private paused = false;
   private chapter = -1;
+  private lastReportedJourney = TRAILHEAD_U;
   private resizeObserver: ResizeObserver | null = null;
   /** Stable scene entries; only the hero's position/frame changes per tick. */
   private readonly drawables: Drawable[] = [];
@@ -235,6 +239,20 @@ export class PixelEngine {
     this.introReturn = { elapsed: 0, camera: { ...this.camera }, hero: { x: this.hero.x, y: this.hero.y } };
   }
 
+  /** Immediate handoff for skip/final actions: never leave an empty transition frame. */
+  finishIntro() {
+    const start = this.world.path.sample(TRAILHEAD_U);
+    this.u = this.targetU = TRAILHEAD_U;
+    this.uVelocity = 0;
+    this.hero.x = start.x;
+    this.hero.y = start.y;
+    this.updateFacing(start.dx, start.dy);
+    this.camera = { x: start.x, y: start.y };
+    this.introReturn = null;
+    this.introShot = null;
+    this.setPaused(false);
+  }
+
   private stepIntro(delta: number) {
     if (!this.introShot) return;
     const handoff = this.introReturn;
@@ -287,7 +305,7 @@ export class PixelEngine {
 
   exitFree() {
     if (this.mode !== "free") return;
-    this.u = this.world.path.nearestU(this.hero.x, this.hero.y);
+    this.u = this.world.path.nearestU(this.hero.x, this.hero.y, this.u);
     this.targetU = this.u;
     this.uVelocity = 0;
     this.returnFrom = { x: this.hero.x, y: this.hero.y };
@@ -574,7 +592,7 @@ export class PixelEngine {
     this.walkDistance += Math.hypot(this.hero.vx, this.hero.vy) * delta;
     this.updateFacing(this.hero.vx, this.hero.vy);
     // Keep the page scroll roughly in step so leaving free mode never jumps.
-    this.u = this.world.path.nearestU(this.hero.x, this.hero.y);
+    this.u = this.world.path.nearestU(this.hero.x, this.hero.y, this.u);
     this.stepNpcs(delta);
   }
 
@@ -789,6 +807,10 @@ export class PixelEngine {
     }
 
     if (!this.introShot) this.updateProximity();
+    if (Math.abs(this.u - this.lastReportedJourney) >= 0.0015) {
+      this.lastReportedJourney = this.u;
+      this.events.onJourney?.(this.u);
+    }
 
     // Camera leads slightly in the direction of travel, and on the guided
     // route it drifts toward whichever station is coming up so the landmark is
@@ -815,10 +837,11 @@ export class PixelEngine {
     }
     this.renderer.clampCamera(this.camera);
 
+    const moving = Math.hypot(this.hero.x - this.heroDrawable.x, this.hero.y - this.heroDrawable.y) > 0.01;
     this.heroDrawable.x = this.hero.x;
     this.heroDrawable.y = this.hero.y;
     this.heroDrawable.facing = this.facing;
-    this.heroDrawable.frame = this.reducedMotion ? 0 : Math.floor(this.walkDistance / 7) % 4;
+    this.heroDrawable.frame = this.reducedMotion || !moving ? 0 : Math.floor(this.walkDistance / 7) % 4;
 
     this.renderer.render({
       world: this.world,
@@ -839,7 +862,7 @@ export class PixelEngine {
         : this.activeStation
         ? {
           x: this.hero.x,
-          y: this.hero.y - 26,
+          y: this.hero.y - HERO_DISPLAY_H - 7,
           text: "E  VIEW",
           accent: this.activeStation.accent,
         }

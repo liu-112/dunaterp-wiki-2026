@@ -1,0 +1,143 @@
+{
+  "sourceDirectory": "需完成推送—完成后移出这个文件夹",
+  "documents": [
+    {
+      "filename": "design-总改.docx",
+      "sha256": "a319cd5374b82eca26026939e5be623e5af7cd9a9cb7402946695f7ca202632f",
+      "bytes": 771879,
+      "paragraphs": 90,
+      "tables": 0,
+      "figures": 9,
+      "references": 15
+    }
+  ],
+  "replacementMode": "complete",
+  "headingRule": "Bold centred paragraphs are major sections; bold left-aligned paragraphs are minor headings.",
+  "majorSections": [
+    {
+      "title": "Construction of Metabolically Reprogrammed Dunaliella salina",
+      "minorHeadings": [
+        "Selection of transcription factors",
+        "Constructing the CPP2146 vector and algae"
+      ]
+    },
+    {
+      "title": "Functional Validation of Metabolically Reprogrammed Dunaliella salina",
+      "minorHeadings": [
+        "Crocetin synthesis",
+        "Astaxanthin synthesis",
+        "β-Ionone synthesis",
+        "β-Citraurin synthesis"
+      ]
+    },
+    {
+      "title": "Safety Model of Metabolically Reprogrammed Dunaliella salina",
+      "minorHeadings": []
+    }
+  ],
+  "normalizations": [
+    "Removed accidental duplicate word in the Safety Model heading.",
+    "Normalized obvious missing or doubled spaces without changing technical meaning.",
+    "Converted inline [n] citations into links to the matching page references."
+  ],
+  "figures": [
+    {
+      "source": "figures/design/01-cpp2146.webp",
+      "sourceImage": "word/media/image1.jpeg",
+      "sourceSha256": "b7cf483a89d15efd691f000cc9be998b8025d49d0a3500c0abe762d417405dd5",
+      "sha256": "cda11638163e2a5901a91a0583df86f01409c9b769f47bf955be4b9bf205e582",
+      "bytes": 96140,
+      "width": 1024,
+      "height": 326,
+      "url": "https://static.igem.wiki/teams/6212/wiki/design/design-01-cpp2146-cda11638163e.webp"
+    },
+    {
+      "source": "figures/design/03-crocetin.webp",
+      "sourceImage": "word/media/image2.png",
+      "sourceSha256": "031382ccea6710089aec8c98362c43ce4e06355fc109d8052ded902ed00836f7",
+      "sha256": "476f6e07cbabc086a69fd8438887e485fb6a28ca7537b05ceade674e34bff629",
+      "bytes": 69226,
+      "width": 1269,
+      "height": 449,
+      "url": "https://static.igem.wiki/teams/6212/wiki/design/design-03-crocetin-476f6e07cbab.webp"
+    },
+    {
+      "source": "figures/design/04-astaxanthin.webp",
+      "sourceImage": "word/media/image3.png",
+      "sourceSha256": "8a3ae883e7a70fdd3618e6726f4a22a3db6ea1f66c164c274eb5e203cbfe5760",
+      "sha256": "5b6aa1b042839a14ebb5454288f11fdeb78e46f128146be0b3682ee6a16f2ccd",
+      "bytes": 77234,
+      "width": 1269,
+      "height": 555,
+      "url": "https://static.igem.wiki/teams/6212/wiki/design/design-04-astaxanthin-5b6aa1b04283.webp"
+    },
+    {
+      "source": "figures/design/04-beta-ionone-production.webp",
+      "sourceImage": "word/media/image4.png",
+      "sourceSha256": "b7455e50df9273c0d27e0583a5923caa52b9737a8bd4cd1dc4aba32943466a4b",
+      "sha256": "d6cb7f38602bdbcb7035307f6f00654ea1bbd9f39624d9fd3585d98fd62438ab",
+      "bytes": 38550,
+      "width": 1364,
+      "height": 767,
+      "url": "https://static.igem.wiki/teams/6212/wiki/design/design-04-beta-ionone-d6cb7f38602b.webp"
+    },
+    {
+      "source": "figures/design/05-beta-citraurin-production.webp",
+      "sourceImage": "word/media/image5.png",
+      "sourceSha256": "fb19db19cd4f63b3232d027663da9e4991b76b718181a511263649193250920c",
+      "sha256": "9c6fa4e05adcf437ea4c88aad201b783e1406a89b94a34be69e8459c32250a79",
+      "bytes": 51634,
+      "width": 1352,
+      "height": 1000,
+      "url": "https://static.igem.wiki/teams/6212/wiki/design/design-05-beta-citraurin-9c6fa4e05adc.webp"
+    },
+    {
+      "source": "figures/design/05-pdca1-activity.webp",
+      "sourceImage": "word/media/image6.webp",
+      "sourceSha256": "6a48481fe10e8d1d2826f394ae63628d808e2f9cf6938d0ba4cffa0b7acd04dd",
+      "sha256": "6a48481fe10e8d1d2826f394ae63628d808e2f9cf6938d0ba4cffa0b7acd04dd",
+      "bytes": 46796,
+      "width": 872,
+      "height": 488,
+      "url": "https://static.igem.wiki/teams/6212/wiki/design/design-05-pdca1-activity-6a48481fe10e.webp"
+    },
+    {
+      "source": "figures/design/06-promoter-comparison-panel-b.webp",
+      "sourceImage": "word/media/image7.jpeg",
+      "sourceSha256": "68d7e395b1bf876b04661c7a4f63d7afe20a764921c981ffc60d387078eb78bb",
+      "sha256": "40f8b31a09ec42545874ece9085c1195c58ea9cf29a84ac92ef4284059d85499",
+      "bytes": 121152,
+      "width": 1496,
+      "height": 1273,
+      "url": "https://static.igem.wiki/teams/6212/wiki/design/design-06-promoter-comparison-panel-b-40f8b31a09ec.webp"
+    },
+    {
+      "source": "figures/design/07-biosafety-high-salt.webp",
+      "sourceImage": "word/media/image8.webp",
+      "sourceSha256": "8377809bc8becde675b6ee7674fc85c5070c71987ab681656fdf832b16e51506",
+      "sha256": "8377809bc8becde675b6ee7674fc85c5070c71987ab681656fdf832b16e51506",
+      "bytes": 10270,
+      "width": 647,
+      "height": 364,
+      "url": "https://static.igem.wiki/teams/6212/wiki/design/design-07-biosafety-high-salt-8377809bc8be.webp"
+    },
+    {
+      "source": "figures/design/08-biosafety-low-salt.webp",
+      "sourceImage": "word/media/image9.webp",
+      "sourceSha256": "2a76e0462185a19c0fc99d80c2c1288e9a600c2d1c905472de4144ffe26b317b",
+      "sha256": "2a76e0462185a19c0fc99d80c2c1288e9a600c2d1c905472de4144ffe26b317b",
+      "bytes": 9266,
+      "width": 588,
+      "height": 331,
+      "url": "https://static.igem.wiki/teams/6212/wiki/design/design-08-biosafety-low-salt-2a76e0462185.webp"
+    }
+  ],
+  "verification": {
+    "renderedPagesInspected": 10,
+    "majorSectionCount": 3,
+    "minorHeadingCount": 6,
+    "referenceCount": 15,
+    "officialCdnAssetsVerified": 9,
+    "oldSectionContentRetained": false
+  }
+}

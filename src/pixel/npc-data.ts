@@ -50,7 +50,8 @@ export type Npc = NpcDefinition & {
 
 /**
  * Three journal-facing NPCs. Their route positions sit near the biological,
- * product and process stations, while their offsets put them on the salt flat.
+ * product and process stations, while their offsets put them on the opposite
+ * side of the boardwalk from the related landmark.
  * Visitors can step off the route in free mode to meet them.
  */
 export const NPC_DEFINITIONS: readonly NpcDefinition[] = [
@@ -58,8 +59,8 @@ export const NPC_DEFINITIONS: readonly NpcDefinition[] = [
     id: "biologist",
     journalKey: "biologist",
     name: "Dr. Lin",
-    role: "Biologist",
-    label: "BIOLOGIST",
+    role: "Academic guide",
+    label: "SCHOLAR",
     stationKey: "brine-edge",
     offset: -52,
     along: -20,
@@ -75,10 +76,10 @@ export const NPC_DEFINITIONS: readonly NpcDefinition[] = [
     id: "engineer",
     journalKey: "engineer",
     name: "Mara",
-    role: "Engineer",
-    label: "ENGINEER",
+    role: "Industry guide",
+    label: "INDUSTRY",
     stationKey: "product-yards",
-    offset: 52,
+    offset: -52,
     along: 40,
     activityRadiusX: 30,
     activityRadiusY: 18,
@@ -92,10 +93,10 @@ export const NPC_DEFINITIONS: readonly NpcDefinition[] = [
     id: "researcher",
     journalKey: "researcher",
     name: "Ari",
-    role: "Researcher",
-    label: "RESEARCHER",
+    role: "Regulatory guide",
+    label: "REGULATORY",
     stationKey: "model-station",
-    offset: -52,
+    offset: 52,
     along: -60,
     activityRadiusX: 18,
     activityRadiusY: 14,

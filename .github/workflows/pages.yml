@@ -47,19 +47,19 @@ jobs:
             project-description \
             engineering \
             experiments \
-            results \
+            lab-notebook \
             dry-lab \
             transcriptomics \
             metabolomics \
             protein \
             model \
             hardware \
+            hardware-design \
             contribution \
-            human-practices \
             safety-and-security \
             alternative-platform \
-            sustainability \
             education \
+            cooperation \
             team \
             attributions \
             responsible-ai

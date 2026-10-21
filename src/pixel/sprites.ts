@@ -1,9 +1,5 @@
-// Every sprite in the world, authored as code.
-//
-// The hero is drawn as character grids because a walk cycle wants hand control
-// over each pixel. Everything else is painted procedurally with the DSL in
-// paint.ts, which keeps the file small and lets a whole family of props be
-// retuned by changing one ramp.
+// The hero uses an embedded PNG animation sheet; scenery and NPCs remain
+// procedural pixel art authored with the drawing helpers in paint.ts.
 
 import { drawText, textWidth } from "./font";
 import {
@@ -12,140 +8,27 @@ import {
   ditherEllipse,
   ellipse,
   frame,
-  fromGrid,
   hash2,
   line,
-  mirrored,
   px,
   rect,
   stamp,
   surface,
   type Painter,
 } from "./paint";
+import { colorOf } from "./palette";
+import { getHeroSheet, type Facing, type HeroSheet } from "./hero";
 
 // ---------------------------------------------------------------------------
 // Hero
 // ---------------------------------------------------------------------------
-// A field researcher in salt-flat kit: wide brim against the glare, pale coat,
-// lime team scarf, sample satchel. 14x20, feet on the last row.
-
-export const HERO_W = 14;
-export const HERO_H = 20;
-const HERO_LEG_ROW = 16;
-
-const HERO_DOWN = [
-  "....111111....",
-  "...1aaaaaa1...",
-  "...1bbbbbb1...",
-  "...17777771...",
-  ".11aaaaaaaa11.",
-  ".1cccccccccc1.",
-  "....1oooo1....",
-  "....o1oo1o....",
-  "....oooooo....",
-  "....1qqqq1....",
-  "..1433333341..",
-  ".1o433333341o1",
-  ".1o477777741o1",
-  ".1o433333341o1",
-  ".1o4p7733341o1",
-  "..1433333341..",
-  "...12211221...",
-  "...12211221...",
-  "...1rr11rr1...",
-  "...11111111...",
-];
-
-const HERO_UP = [
-  "....111111....",
-  "...1aaaaaa1...",
-  "...1bbbbbb1...",
-  "...17777771...",
-  ".11aaaaaaaa11.",
-  ".1cccccccccc1.",
-  "....1rrrr1....",
-  "....rrrrrr....",
-  "....rrrrrr....",
-  "....1qqqq1....",
-  "..1433333341..",
-  ".1o433333341o1",
-  ".1o433333341o1",
-  ".1o437777341o1",
-  ".1o433773341o1",
-  "..1433333341..",
-  "...12211221...",
-  "...12211221...",
-  "...1rr11rr1...",
-  "...11111111...",
-];
-
-const HERO_SIDE = [
-  "....111111....",
-  "...1aaaaaa1...",
-  "...1bbbbbb1...",
-  "...17777771...",
-  "..1aaaaaaaa1..",
-  "..1cccccccc1..",
-  "....1ooor1....",
-  "....oo1orr....",
-  "....oooorr....",
-  "....1qqqr1....",
-  "...1433341....",
-  "..o1433341....",
-  "..o1477741....",
-  "...1433341....",
-  "...14pp7341...",
-  "...1433341....",
-  "....122221....",
-  "....122221....",
-  "....1rrr11....",
-  "....111111....",
-];
-
-/** Horizontal foot offset per walk frame. Frames 0 and 2 are the pass poses. */
-const LEG_SWING = [0, 1, 0, -1];
-/** Upper body lifts a pixel on the contact frames, which reads as a stride. */
-const BODY_BOB = [0, -1, 0, -1];
-
-function heroFrame(base: Painter, frameIndex: number): Painter {
-  const p = surface(HERO_W, HERO_H);
-  const bob = BODY_BOB[frameIndex];
-  const swing = LEG_SWING[frameIndex];
-  // Upper body.
-  p.ctx.drawImage(base.canvas, 0, 0, HERO_W, HERO_LEG_ROW, 0, bob, HERO_W, HERO_LEG_ROW);
-  // Legs, swung sideways and always planted on the baseline.
-  p.ctx.drawImage(
-    base.canvas,
-    0,
-    HERO_LEG_ROW,
-    HERO_W,
-    HERO_H - HERO_LEG_ROW,
-    swing,
-    HERO_LEG_ROW,
-    HERO_W,
-    HERO_H - HERO_LEG_ROW,
-  );
-  return p;
-}
-
-export type Facing = "down" | "up" | "left" | "right";
-
-export type HeroSheet = Record<Facing, Painter[]>;
+export type { Facing, HeroSheet } from "./hero";
 
 export type NpcSpriteAppearance = {
   tint: string;
   accent: string;
   accessory: "satchel" | "helmet" | "notebook";
 };
-
-function buildHero(): HeroSheet {
-  const down = fromGrid(HERO_DOWN);
-  const up = fromGrid(HERO_UP);
-  const left = fromGrid(HERO_SIDE);
-  const right = mirrored(left);
-  const frames = (base: Painter) => [0, 1, 2, 3].map((i) => heroFrame(base, i));
-  return { down: frames(down), up: frames(up), left: frames(left), right: frames(right) };
-}
 
 // ---------------------------------------------------------------------------
 // Field contacts
@@ -375,6 +258,96 @@ function saltPile(): Painter {
   // A shovel left standing in the pile.
   line(p, 20, 2, 22, 12, "q");
   block(p, 21, 11, 4, 4, "C", "d", "a");
+  return p;
+}
+
+function trailheadLabBench(): Painter {
+  const p = surface(96, 68);
+  const polygon = (points: Array<[number, number]>, key: string) => {
+    const minY = Math.min(...points.map(([, y]) => y));
+    const maxY = Math.max(...points.map(([, y]) => y));
+    p.ctx.fillStyle = colorOf(key);
+    for (let y = minY; y < maxY; y += 1) {
+      const scanY = y + 0.5;
+      const intersections: number[] = [];
+      for (let i = 0; i < points.length; i += 1) {
+        const [x1, y1] = points[i];
+        const [x2, y2] = points[(i + 1) % points.length];
+        if ((y1 <= scanY && y2 > scanY) || (y2 <= scanY && y1 > scanY)) {
+          intersections.push(x1 + ((scanY - y1) * (x2 - x1)) / (y2 - y1));
+        }
+      }
+      intersections.sort((a, b) => a - b);
+      for (let i = 0; i + 1 < intersections.length; i += 2) {
+        const left = Math.ceil(intersections[i] - 0.5);
+        const right = Math.floor(intersections[i + 1] - 0.5);
+        rect(p, left, y, right - left + 1, 1, key);
+      }
+    }
+  };
+
+  // Raised backsplash and instrument rail: open above, so this landmark reads
+  // as a working bench rather than another building on the salt flat.
+  block(p, 8, 8, 72, 26, "b", "d", "a");
+  for (let x = 12; x < 78; x += 8) rect(p, x, 11, 1, 20, "c");
+  for (let y = 15; y < 31; y += 8) rect(p, 10, y, 68, 1, "c");
+  frame(p, 8, 8, 72, 26, "1");
+  block(p, 5, 4, 78, 6, "C", "1", "F");
+  rect(p, 7, 5, 74, 2, "8");
+
+  // Data display with a small rising trace.
+  block(p, 12, 13, 21, 16, "2", "1", "3");
+  rect(p, 15, 16, 15, 9, "E");
+  line(p, 16, 23, 20, 21, "x");
+  line(p, 20, 21, 23, 22, "x");
+  line(p, 23, 22, 29, 17, "8");
+  rect(p, 19, 29, 7, 2, "1");
+
+  // Four samples sit in a rack at the centre of the bench.
+  block(p, 38, 24, 25, 5, "C", "G", "F");
+  const samples = ["x", "8", "t", "s"];
+  samples.forEach((tint, index) => {
+    const x = 41 + index * 5;
+    block(p, x, 15, 4, 11, "F", "1", "a");
+    rect(p, x + 1, 20, 2, 5, tint);
+  });
+
+  // A culture flask makes the wet-lab function legible even at map scale.
+  block(p, 68, 10, 7, 5, "F", "1", "a");
+  rect(p, 70, 8, 3, 3, "x");
+  polygon([[67, 15], [76, 15], [80, 27], [63, 27]], "F");
+  polygon([[66, 18], [77, 18], [80, 29], [63, 29]], "1");
+  polygon([[68, 19], [75, 19], [77, 27], [66, 27]], "9");
+  rect(p, 66, 24, 11, 3, "7");
+
+  // Deep counter with a receding right edge, followed by front cabinets.
+  block(p, 4, 32, 78, 8, "C", "1", "F");
+  rect(p, 7, 33, 72, 3, "a");
+  polygon([[82, 32], [93, 27], [93, 34], [82, 40]], "d");
+  line(p, 82, 32, 93, 27, "1");
+  line(p, 93, 27, 93, 34, "1");
+  line(p, 93, 34, 82, 40, "1");
+
+  block(p, 8, 40, 72, 23, "b", "d", "a");
+  frame(p, 8, 40, 72, 23, "1");
+  rect(p, 34, 41, 3, 21, "1");
+  rect(p, 58, 41, 3, 21, "1");
+  for (const [x, w] of [[10, 23], [38, 19], [62, 16]] as const) {
+    rect(p, x, 45, w, 1, "c");
+    rect(p, x + Math.floor(w / 2) - 2, 42, 4, 2, "3");
+  }
+  block(p, 38, 49, 19, 10, "2", "1", "3");
+  drawText(p, "LAB", 42, 52, "8", { shadow: "1" });
+
+  // Cabinet side plane completes the same restrained perspective used by the
+  // other route equipment, without introducing a roof or a ground ellipse.
+  polygon([[80, 40], [93, 34], [93, 56], [80, 63]], "c");
+  line(p, 80, 40, 93, 34, "1");
+  line(p, 93, 34, 93, 56, "1");
+  line(p, 93, 56, 80, 63, "1");
+  for (let y = 44; y < 60; y += 6) line(p, 82, y, 91, y - 4, "d");
+  rect(p, 10, 63, 7, 4, "1");
+  rect(p, 70, 63, 7, 4, "1");
   return p;
 }
 
@@ -731,7 +704,7 @@ let atlas: Atlas | null = null;
 export function getAtlas(): Atlas {
   if (atlas) return atlas;
   atlas = {
-    hero: buildHero(),
+    hero: getHeroSheet(),
     shadowSmall: shadowBlob(6, 2),
     shadowMedium: shadowBlob(11, 4),
     shadowLarge: shadowBlob(20, 6),
@@ -745,6 +718,7 @@ export function getAtlas(): Atlas {
       crystal6: saltCrystal(6),
       crystal7: saltCrystal(7),
       pile: saltPile(),
+      trailheadLabBench: trailheadLabBench(),
       postShort: post(14),
       postTall: post(24, "7"),
       postLime: post(18, "8"),

@@ -1,3 +1,4 @@
+import { renderInlineText } from './inline-text';
 import {
   useCallback,
   useEffect,
@@ -78,7 +79,7 @@ const chapters = [
     kicker: "RESPONSIBLE ENGINEERING",
     title: "The world changes the design",
     body: "Safety, stakeholder feedback and reproducibility determine whether the platform should move beyond the lab.",
-    link: "/human-practices",
+    link: "/education",
     c: "#c4a8ff",
   },
 ] as const;
@@ -87,16 +88,18 @@ const panelGroups: PanelGroup[] = [
   {
     key: "wet-lab",
     index: "01",
-    label: "Wet Lab",
-    short: "WL",
-    summary: "Build the chassis, test the constructs and preserve every experimental decision.",
+    label: "Project",
+    short: "PJ",
+    summary: "Frame the platform, explain the design, test the constructs and connect the evidence to engineering decisions.",
     accent: "#c9ff55",
     links: [
-      { label: "Project Description", href: "/project-description", note: "The biological idea and product routes" },
+      { label: "Description", href: "/project-description", note: "Background, chassis choice and project overview" },
+      { label: "Contribution", href: "/contribution", note: "What the project contributes" },
+      { label: "Design", href: "/design", note: "Platform logic and route architecture" },
+      { label: "Experiments", href: "/experiments", note: "Validation workflows and records" },
       { label: "Engineering", href: "/engineering", note: "Design · Build · Test · Learn" },
-      { label: "Experiments", href: "/experiments", note: "Protocols, controls and records" },
-      { label: "Results", href: "/results", note: "Evidence and its limits" },
       { label: "Safety", href: "/safety-and-security", note: "Containment and risk design" },
+      { label: "Parts", href: "/parts", note: "Part and device overview" },
     ],
   },
   {
@@ -113,12 +116,11 @@ const panelGroups: PanelGroup[] = [
     index: "03",
     label: "Human Practices",
     short: "HP",
-    summary: "Let stakeholders, safety and sustainability change what the team builds.",
+    summary: "Share synthetic biology through education, exchange and open cooperation.",
     accent: "#f8cb54",
     links: [
-      { label: "Human Practices", href: "/human-practices", note: "People, feedback and design decisions" },
-      { label: "Sustainability", href: "/sustainability", note: "Whole-system impact" },
       { label: "Education", href: "/education", note: "Dialogue and reusable learning" },
+      { label: "Cooperation", href: "/cooperation", note: "Industry and regulatory exchange" },
     ],
   },
   {
@@ -131,7 +133,7 @@ const panelGroups: PanelGroup[] = [
     links: [
       { label: "Team", href: "/team", note: "Students, PIs, instructors and advisors" },
       { label: "Attributions", href: "/attributions", note: "A transparent division of work" },
-      { label: "Responsible AI", href: "/responsible-ai", note: "Models, boundaries and human review" },
+      { label: "Collaboration", href: "/collaboration", note: "Exchange across iGEM teams" },
       { label: "Complete Wiki Map", href: "/wiki-map", note: "Every standard route in one place" },
     ],
   },
@@ -684,32 +686,6 @@ function createProductDepot() {
   return group;
 }
 
-function createSustainabilityStation() {
-  const group = new THREE.Group();
-  const frameMaterial = new THREE.MeshToonMaterial({ color: 0x17463e });
-  const solarMaterial = new THREE.MeshToonMaterial({ color: 0x386a78 });
-
-  [-1.8, 0, 1.8].forEach((x) => {
-    const panel = new THREE.Mesh(new THREE.BoxGeometry(1.45, 0.12, 2.25), solarMaterial);
-    panel.position.set(x, 1.55, 0);
-    panel.rotation.x = -0.42;
-    panel.castShadow = true;
-    group.add(panel);
-    const post = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.1, 1.45, 10), frameMaterial);
-    post.position.set(x, 0.75, 0.3);
-    group.add(post);
-  });
-
-  const waterLoop = new THREE.Mesh(
-    new THREE.TorusGeometry(1.2, 0.16, 10, 36),
-    new THREE.MeshToonMaterial({ color: 0x7de2ff }),
-  );
-  waterLoop.position.set(0, 2.35, -2.15);
-  waterLoop.rotation.y = Math.PI / 2;
-  group.add(waterLoop);
-  return group;
-}
-
 function addProp(
   scene: THREE.Scene,
   curve: THREE.CatmullRomCurve3,
@@ -1143,7 +1119,6 @@ export function DunaWorld({ Header }: { Header: ComponentType<HeaderProps> }) {
       { t: 0.49, offset: 12.9, object: createWetLabBench(), scale: 0.71, turn: -0.1 },
       { t: 0.665, offset: -13.1, object: createCarotenoidHub(), scale: 0.74, turn: 0.12 },
       { t: 0.815, offset: -13, object: createProductDepot(), scale: 0.76, turn: -0.1 },
-      { t: 0.935, offset: 13.3, object: createSustainabilityStation(), scale: 0.74, turn: 0.12 },
     ];
     scenicFeatures.forEach((feature) => {
       addProp(scene, curve, feature.t, feature.offset, feature.object, feature.scale);
@@ -1711,7 +1686,7 @@ export function DunaWorld({ Header }: { Header: ComponentType<HeaderProps> }) {
             className={`duna-scroll-segment duna-scroll-chapter${index % 2 ? " is-right" : ""}`}
             style={{ "--chapter-accent": chapter.c } as CSSProperties}
             aria-labelledby={`chapter-${chapter.n}`}
-          ><div><p><span>{chapter.n} / 06</span>{chapter.kicker}</p><h2 id={`chapter-${chapter.n}`}>{chapter.title}</h2><p>{chapter.body}</p><Link to={chapter.link}>Explore this chapter <span aria-hidden="true">↗</span></Link></div></section>
+          ><div><p><span>{chapter.n} / 06</span>{chapter.kicker}</p><h2 id={`chapter-${chapter.n}`}>{renderInlineText(chapter.title)}</h2><p>{renderInlineText(chapter.body)}</p><Link to={chapter.link}>Explore this chapter <span aria-hidden="true">↗</span></Link></div></section>
         ))}
         <div className="duna-terminal-space" aria-hidden="true" />
       </div>
